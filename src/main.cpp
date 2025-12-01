@@ -8,6 +8,7 @@
 #include "sparser.h"
 #include "output_writer.h"
 #include "json_output_writer.h"
+#include "output_writer_factory.h"
 
 int main(int argc, char *argv[])
 {
@@ -49,12 +50,9 @@ int main(int argc, char *argv[])
 
     std::vector<SRegister> reglist = parse->parse();
 
-    std::unique_ptr<OutputWriter> outputwriter = nullptr;
+    OutputWriterFactory factory;
 
-    if (output_type == "json")
-    {
-        outputwriter = std::make_unique<JsonOutputWriter>();
-    }
+    std::unique_ptr<OutputWriter> outputwriter = factory.getOutputWriter(output_type);
 
     outputwriter->writeOutput(reglist, outPath);
 

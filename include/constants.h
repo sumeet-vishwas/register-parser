@@ -9,6 +9,9 @@ namespace Constants
     // Register keywords
     inline constexpr std::string_view REG = "REG";
     inline constexpr std::string_view FIELD = "FIELD";
+
+    // cmd line arg
+    inline constexpr std::string_view OUT_JSON = "json";
 }
 
 #endif
